@@ -52,5 +52,5 @@ Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.in
 // Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
 
 //  Subscribe Routes
-// Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
+Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
 // Route::delete('/subscribe/{id}', [SubscribeController::class, 'destroy'])->name('subscribe.destroy');

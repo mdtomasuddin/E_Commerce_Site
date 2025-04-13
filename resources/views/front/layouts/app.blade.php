@@ -34,18 +34,38 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('front/assets/images/favicon.png') }}" type="image/x-icon">
 
-    <link rel="stylesheet" href="{{ asset('front/admin/css/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/toastr.css') }}">
 
 </head>
 
 <body class="direction-ltr">
     @include('front.layouts.partials.header')
-   
+
     <div class="maincontent">
         @yield('content')
     </div>
 
-    @include('front.layouts.partials.footer')
+    @include('front.layouts.partials.footer');
+
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "5000"
+        };
+
+        @if (session('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{ $error }}");
+            @endforeach
+        @endif
+    </script>
+
 
 </body>
 
