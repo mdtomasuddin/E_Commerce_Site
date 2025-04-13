@@ -8,8 +8,8 @@
                         <a href="http://127.0.0.1:8000" class="footer-brand-logo mb-25"><img
                                 src="{{ asset('front/assets/images/logo.png') }}" alt="footer-logo" /></a>
                         <p class="address-text">
-                            House 24, Road 17 <br />
-                            Banani, <br />
+                            Kaziput<br />
+                            Sirajgonj, <br />
                             Dhaka
                         </p>
                         <div class="block-content mb-30">
