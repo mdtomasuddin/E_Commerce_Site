@@ -61,18 +61,23 @@
                 </div>
 
                 <div class="googlemap mb-5">
-                    
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d29153.26293127732!2d90.2987776!3d24.0254976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sbd!4v1744457859702!5m2!1sen!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    
+
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d29153.26293127732!2d90.2987776!3d24.0254976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sbd!4v1744457859702!5m2!1sen!2sbd"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                 </div>
-                
+
                 <div class="contact-form-area">
                     <div class="contct-form-top text-center">
                         <h2 class="form-title">Got any questions?</h2>
                         <p class="form-subtitle">Use the form below to get in touch with the sales team</p>
                     </div>
-                    <form method="post" action="/contact-us/store">
-                        <input type="hidden" name="_token" value="z8IzV1IjwBDBzh2xk5mWIRncryxtnW1G2NyKj67x">
+
+                    <form action="{{ route('contact.store') }}" method="POST">
+                        @csrf
+                        {{-- <input type="hidden" name="_token" value="z8IzV1IjwBDBzh2xk5mWIRncryxtnW1G2NyKj67x"> --}}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
