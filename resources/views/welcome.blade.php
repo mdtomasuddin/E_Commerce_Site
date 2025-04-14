@@ -4,21 +4,21 @@
         <div class="hero-slider">
             @foreach ($sliders as $slider)
                 <div class="signle-slide"
-                    style="background-image: url({{ asset('/front/assets/images/slider/'.$slider->image) }});">
+                    style="background-image: url({{ asset('/front/assets/images/slider/' . $slider->image) }});">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-6 col-6 mb-5">
                                 <div class="hero-slider-content text-center">
                                     <h2 class="slider-sub-title">
-                                        {{ $slider->title ?? " "}}</h2>
+                                        {{ $slider->title ?? ' ' }}</h2>
                                     <h1 class="slider-title">
-                                        {{ $slider->subtitle ?? " "}}
+                                        {{ $slider->subtitle ?? ' ' }}
                                     </h1>
                                     <p class="slider-text">
-                                        {{ $slider->description ?? " "}}    
+                                        {{ $slider->description ?? ' ' }}
                                     </p>
                                     <div class="slider-btn">
-                                        <a href="{{ $slider->link}}" class="secondary-btn">See Colections
+                                        <a href="{{ $slider->link }}" class="secondary-btn">See Colections
                                             <i class="iocn flaticon-right-arrow"></i></a>
                                     </div>
                                 </div>
@@ -368,38 +368,14 @@
                 </div>
             </div>
             <div class="story-box-slide">
-                <div class="single-story-box">
-                    <img src="{{ asset('front/assets/images/avatar.jpg') }}" class="avatar" alt="Testimonial">
-                    <h3 class="story-title">Rony <span class="story-year">Engineer</span>
-                    </h3>
-                    <p class="story-content">I recently discovered FashionWave, and I must say it's become my go-to for
-                        all things fashion! From trendy tops to chic dresses, the site offers a fantastic variety of
-                        clothing that feels both high-quality and reasonably priced. </p>
-                </div>
-                <div class="single-story-box">
-                    <img src="{{ asset('front/assets/images/avatar2.jpg') }}" class="avatar" alt="Testimonial">
-                    <h3 class="story-title">Dholi <span class="story-year">IT Officer</span>
-                    </h3>
-                    <p class="story-content">I recently discovered FashionWave, and I must say it's become my go-to for
-                        all things fashion! From trendy tops to chic dresses, the site offers a fantastic variety of
-                        clothing that feels both high-quality and reasonably priced. </p>
-                </div>
-                <div class="single-story-box">
-                    <img src="{{ asset('front/assets/images/avatar.jpg') }}" class="avatar" alt="Testimonial">
-                    <h3 class="story-title">Jakir <span class="story-year">CEO</span>
-                    </h3>
-                    <p class="story-content">I recently discovered FashionWave, and I must say it's become my go-to for
-                        all things fashion! From trendy tops to chic dresses, the site offers a fantastic variety of
-                        clothing that feels both high-quality and reasonably priced. </p>
-                </div>
-                <div class="single-story-box">
-                    <img src="{{ asset('assets/images/avatar2.jpg') }}" class="avatar" alt="Testimonial">
-                    <h3 class="story-title">Nahar <span class="story-year">Programmer</span>
-                    </h3>
-                    <p class="story-content">I recently discovered FashionWave, and I must say it's become my go-to for
-                        all things fashion! From trendy tops to chic dresses, the site offers a fantastic variety of
-                        clothing that feels both high-quality and reasonably priced. </p>
-                </div>
+                @foreach ($testmonials as $testmonial)
+                    <div class="single-story-box">
+                        <img src="{{ asset('front/assets/images/'.$testmonial->image) }}" class="avatar" alt="Testimonial">
+                        <h3 class="story-title">{{ $testmonial->name }}   <span class="story-year">   {{ $testmonial->designation }}</span>
+                        </h3>
+                        <p class="story-content">{{ $testmonial->review }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -1008,12 +984,12 @@
                                     </div>
                                     <ul class="prdouct-btn-wrapper">
                                         <li class="single-product-btn">
-                                            <a class="product-btn CompareList" data-id="11"
-                                                title="Add to compare"><i class="icon flaticon-bar-chart"></i></a>
+                                            <a class="product-btn CompareList" data-id="11" title="Add to compare"><i
+                                                    class="icon flaticon-bar-chart"></i></a>
                                         </li>
                                         <li class="single-product-btn">
-                                            <a class="product-btn MyWishList" data-id="11"
-                                                title="Add to wishlist"><i class="icon flaticon-like"></i></a>
+                                            <a class="product-btn MyWishList" data-id="11" title="Add to wishlist"><i
+                                                    class="icon flaticon-like"></i></a>
                                         </li>
                                     </ul>
                                 </div>
