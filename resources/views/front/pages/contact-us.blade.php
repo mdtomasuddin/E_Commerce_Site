@@ -1,4 +1,8 @@
 @extends('front.layouts.app')
+@section('title', $data->mete_title)
+@section('meta_description', $data->meta_description)
+@section('meta_keywords', $data->meta_keywords)
+
 @section('content')
     <!-- breadcrumb area start here  -->
     <div class="breadcrumb-area">
@@ -71,8 +75,8 @@
 
                 <div class="contact-form-area">
                     <div class="contct-form-top text-center">
-                        <h2 class="form-title">Got any questions?</h2>
-                        <p class="form-subtitle">Use the form below to get in touch with the sales team</p>
+                        <h2 class="form-title"> {{ $data->title ?? " " }}</h2>
+                        <p class="form-subtitle"> {{ $data->title ?? " " }}</p>
                     </div>
 
                     <form action="{{ route('contact.store') }}" method="POST">

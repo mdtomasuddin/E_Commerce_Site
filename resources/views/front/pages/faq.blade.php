@@ -1,4 +1,8 @@
 @extends('front.layouts.app')
+@section('title', $data->mete_title)
+@section('meta_description', $data->meta_description)
+@section('meta_keywords', $data->meta_keywords)
+
 @section('content')
 
  <!-- breadcrumb area start here  -->

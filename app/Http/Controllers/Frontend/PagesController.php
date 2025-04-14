@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Page;
 use DrewM\MailChimp\MailChimp;
 use Exception;
 use Illuminate\Http\Request;
@@ -14,13 +15,20 @@ class PagesController extends Controller
 
     public function about_us()
     {
-        return view('front.pages.about-us');
+
+        $data = Page::where('slug', 'about-us')->first();
+        return view('front.pages.about-us', [
+            'data' => $data,
+        ]);
     }
 
 
     public function contact_us()
     {
-        return view('front.pages.contact-us');
+        $data = Page::where('slug', 'contact-us')->first();
+        return view('front.pages.contact-us', [
+            'data' => $data,
+        ]);
     }
 
 
@@ -78,11 +86,17 @@ class PagesController extends Controller
 
     public function terms_conditions()
     {
-        return view('front.pages.terms-conditions');
+        $data = Page::where('slug', 'terms-conditions')->first();
+        return view('front.pages.terms-conditions', [
+            'data' => $data,
+        ]);
     }
 
     public function privacy_policy()
     {
-        return view('front.pages.privacy-policy');
+        $data = Page::where('slug', 'privacy-policy')->first();
+        return view('front.pages.privacy-policy', [
+            'data' => $data,
+        ]);
     }
 }
