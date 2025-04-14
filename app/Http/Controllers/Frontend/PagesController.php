@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use DrewM\MailChimp\MailChimp;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PagesController extends Controller
 {
@@ -31,15 +34,40 @@ class PagesController extends Controller
             'message' => 'required|string',
         ]);
 
-        Contact::create([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'email' => $request->email,
-            'contact_number' => $request->contact_number,
-            'message' => $request->message,
-        ]);
+        try {
+            Contact::create([
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'email' => $request->email,
+                'contact_number' => $request->contact_number,
+                'message' => $request->message,
+            ]);
 
-        return redirect()->back()->with('success', 'Thanks! Your message has been sent successfully.');
+            //Send email to Mailchimp audience list
+            $mailchimp = new MailChimp(env('MAILCHIMP_API_KEY'));
+            $list_id = env('MAILCHIMP_LIST_ID');
+
+            $response = $mailchimp->post("lists/$list_id/members", [
+                'email_address' => $request->email,
+                'status'        => 'subscribed',
+                'merge_fields'  => [
+                    'FNAME' => $request->firstname ?? "",
+                    'LNAME' => $request->lastname ?? "",
+                    'PHONE' => $request->contact_number ?? "",
+
+                ],
+            ]);
+
+            //conditonal check for success/failure
+            if ($mailchimp->success()) {
+                return redirect()->back()->with('success', 'Thanks! Your message has been sent successfully!');
+            } else {
+                Log::error('Mailchimp API Error: ' . $mailchimp->getLastError());
+                return redirect()->back()->with('warning', 'Thanks! Your message has been sent successfully!');
+            }
+        } catch (Exception $e) {
+            Log::error('Contact Store Error: ' . $e->getMessage());
+        }
     }
 
     public function faq()
